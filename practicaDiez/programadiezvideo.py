@@ -2,7 +2,7 @@
 
 import cv2
 
-from moviepy import VideoFileClip
+from moviepy.editor import VideoFileClip
 import pygame
 
 videoReal = "practicaDiez/hora.mp4"

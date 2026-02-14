@@ -10,6 +10,7 @@ imagen_hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
 #LA MATRIZ DE COLORES
 azul_uno = np.array([100,100,20])
 azul_dos = np.array([125,255,255])
+
 verde_uno = np.array([25,20,20])
 verde_dos = np.array([100,255,255])
 
@@ -41,7 +42,7 @@ mascaras = cv2.morphologyEx(mascaras,cv2.MORPH_OPEN,kernel)
 resultado = cv2.bitwise_and(img,img,mask=mascaras)
 
 #Significa que si encontro la mascara los elementos dentro de la matriz
-resultado[mascaras > 0] = (255,255,255) #En caso de encontrar la matriz, sustituimos el color de la matriz por el color indicado HSV(0,0,0)
+resultado[mascaras > 0] = (0,80,120) #En caso de encontrar la matriz, sustituimos el color de la matriz por el color indicado HSV(0,0,0)
 
 #Guardamos la mascara en imagen
 cv2.imwrite("PracticaNueve/PracticaNueve.jpg",resultado)
@@ -58,7 +59,7 @@ gamma = 0
 fusion = cv2.addWeighted(resultado,alpha,img,beta,gamma)
 
 cv2.imshow("Mascara",resultado)
-#cv2.imshow("Fusion",fusion)
+cv2.imshow("Fusion",fusion)
 cv2.imshow("Imagen",img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

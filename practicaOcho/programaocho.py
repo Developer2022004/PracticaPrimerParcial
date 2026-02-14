@@ -32,8 +32,8 @@ cv2.putText(img, "Colores a cambia",(100,50),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255
 #Extraemos en HSV para procesar los patrones de colores
 imagen_hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
 
-rojo_uno = np.array([0,100,20])
-rojo_dos = np.array([5,255,255])
+rojo_uno = np.array([0,50,20])
+rojo_dos = np.array([5,200,255])
 rojo_tres = np.array([175,100,20])
 rojo_cuatro = np.array([179,255,255])
 kernel = np.ones((7,7),np.uint8)

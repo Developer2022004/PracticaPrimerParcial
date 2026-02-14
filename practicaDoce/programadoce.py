@@ -15,18 +15,22 @@ while(camara.isOpened()):
         # H (Hue): 100–130 → rango típico del azul. 
         # S (Saturation): 100–255 → evita detectar colores muy apagados. 
         # V (Value): 20–255 → evita zonas muy oscuras.
-        rojo1 = np.array([0,100,20])
-        rojo2 = np.array([5,255,255])
-        rojo3 = np.array([175,100,20])
-        rojo4 = np.array([179,255,255])
-        lower_black = np.array([0, 0, 0])
-        upper_black = np.array([180, 255, 50])
+        # rojo1 = np.array([0,100,20])
+        # rojo2 = np.array([5,255,255])
+        # rojo3 = np.array([175,100,20])
+        # rojo4 = np.array([179,255,255])
+        # lower_black = np.array([0, 0, 0])
+        # upper_black = np.array([180, 255, 50])
+        azul1 = np.array([100,140,80])
+        azul2 = np.array([125,255,150])
         kernel = np.ones((7,7),np.uint8)
-        mascara_uno = cv2.inRange(hsv,rojo1,rojo2)
-        mascara_dos = cv2.inRange(hsv,rojo3,rojo4)
-        mascara_tres = cv2.inRange(hsv,lower_black,upper_black)
-        mascaras = cv2.add(mascara_uno,mascara_dos)
-        mascaras = cv2.add(mascaras,mascara_tres)
+        
+        # mascara_uno = cv2.inRange(hsv,rojo1,rojo2)
+        # mascara_dos = cv2.inRange(hsv,rojo3,rojo4)
+        # mascara_tres = cv2.inRange(hsv,lower_black,upper_black)
+        mascaras = cv2.inRange(hsv,azul1,azul2)
+        # mascaras = cv2.add(mascara_uno,mascara_dos)
+        # mascaras = cv2.add(mascaras,mascara_tres)
         mascaras = cv2.morphologyEx(mascaras, cv2.MORPH_CLOSE, kernel)
         mascaras = cv2.morphologyEx(mascaras, cv2.MORPH_OPEN, kernel)
         resultado = cv2.bitwise_and(frame, frame, mask=mascaras)
@@ -39,7 +43,6 @@ while(camara.isOpened()):
             break
     else:
         break
-
 
 camara.release()
 cv2.destroyAllWindows()

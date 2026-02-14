@@ -23,6 +23,8 @@ while(True):
         mascara = cv2.morphologyEx(mascara, cv2.MORPH_CLOSE, kernel)
         mascara = cv2.morphologyEx(mascara, cv2.MORPH_OPEN, kernel)
         resultado = cv2.bitwise_and(frame, frame, mask=mascara)
+        
+        #Cambio de color de la mascara
         resultado[mascara>0]=(10,155,25)
         
         cv2.namedWindow("NuevoFrame",cv2.WINDOW_NORMAL)
